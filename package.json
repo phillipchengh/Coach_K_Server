@@ -27,5 +27,8 @@
     "express": "^4.10.0",
     "passport-facebook": "^1.0.3",
     "pg": "^3.6.2"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }
