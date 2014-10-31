@@ -46,7 +46,11 @@ app.get('/students', function(req, res) {
   });
 
   query.on('end', function(result) {
-    res.json(result.rows);
+    res.json({
+      status: 'success',
+      data: result.rows,
+      message: 'success'
+    });
   });
 
 });
@@ -87,7 +91,11 @@ app.get('/student', function(req, res) {
   });
 
   query.on('end', function(result) {
-    res.json(result.rows);
+    res.json({
+      status: 'success',
+      data: result.rows,
+      message: 'success'
+    });
   });
 
 });
@@ -203,7 +211,11 @@ app.get('/runs', function(req, res) {
   });
 
   query.on('end', function(result) {
-    res.json(result.rows);
+    res.json({
+      status: 'success',
+      data: result.rows,
+      message: 'success'
+    });
   });
    
 });
