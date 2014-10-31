@@ -55,3 +55,9 @@ GET /run
     ?user_id=USER_ID
 ```
 Get all runs associated with user_id=USER_ID.
+
+#Updating Heroku Schema
+
+```
+cat create_tables.sql | heroku pg:psql --app coach-k-server
+```
