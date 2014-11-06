@@ -91,11 +91,19 @@ app.get('/student', function(req, res) {
   });
 
   query.on('end', function(result) {
-    res.json({
-      status: 'success',
-      data: result.rows,
-      message: 'success'
-    });
+    if (result.rows.length <= 0) {
+      res.json({
+        status: 'unregistered',
+        data: null,
+        message: 'user does not exist'
+      });
+    } else {
+      res.json({
+        status: 'success',
+        data: result.rows,
+        message: 'success'
+      });
+    }
   });
 
 });
