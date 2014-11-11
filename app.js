@@ -112,9 +112,9 @@ app.post('/student', function(req, res) {
   var query_text = 
   'INSERT \
   INTO STUDENT \
-  (USER_ID, GENRE, DISTANCE) \
-  VALUES ($1, $2, $3)';
-  var query_params = [req.body.user_id, req.body.genre, req.body.distance];
+  (USER_ID, GENRE, OVERALL_PACE, TOTAL_DISTANCE) \
+  VALUES ($1, $2, $3, $4)';
+  var query_params = [req.body.user_id, req.body.genre, req.body.overall_pace, req.body.total_distance];
 
   var postgres_client = new pg.Client(POSTGRES_CLIENT);
 
