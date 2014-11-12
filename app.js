@@ -140,6 +140,41 @@ app.post('/student', function(req, res) {
 
 });
 
+app.put('/student', function(req, res) {
+  var query_text = 
+  'UPDATE STUDENT\
+  SET \
+	GENRE = $2, \
+	OVERALL_PACE = $3, \
+	TOTAL_DISTANCE = $4 \
+	WHERE \
+	USER_ID = $1';
+  var query_params = [req.body.user_id, req.body.genre, req.body.overall_pace, req.body.total_distance];
+
+  var postgres_client = new pg.Client(POSTGRES_CLIENT);
+
+  postgres_client.connect();
+
+  postgres_client.query(query_text, query_params, function(error, result) {
+    if (error) {
+      console.log(error);
+      res.json({
+        status: 'error',
+        data: null,
+        message: error.toString()
+      });
+    } else {
+      res.json({
+        status: 'success',
+        data: result,
+        message: 'success'
+      });
+    }
+    postgres_client.end();
+  });
+
+});
+
 app.post('/run', function(req, res) {
 
   if (!req.body.user_id) {
