@@ -51,6 +51,7 @@ app.get('/students', function(req, res) {
       data: result.rows,
       message: 'success'
     });
+    postgres_client.end();
   });
 
 });
@@ -104,6 +105,7 @@ app.get('/student', function(req, res) {
         message: 'success'
       });
     }
+    postgres_client.end();
   });
 
 });
@@ -259,6 +261,7 @@ app.get('/runs', function(req, res) {
       data: result.rows,
       message: 'success'
     });
+    postgres_client.end();
   });
    
 });
