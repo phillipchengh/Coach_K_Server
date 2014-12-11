@@ -114,9 +114,9 @@ app.post('/student', function(req, res) {
   var query_text = 
   'INSERT \
   INTO STUDENT \
-  (USER_ID, GENRE, OVERALL_PACE, TOTAL_DISTANCE) \
+  (USER_ID, GENRE, MIX_ID, OVERALL_PACE, TOTAL_DISTANCE) \
   VALUES ($1, $2, $3, $4)';
-  var query_params = [req.body.user_id, req.body.genre, req.body.overall_pace, req.body.total_distance];
+  var query_params = [req.body.user_id, req.body.genre, req.body.mix_id, req.body.overall_pace, req.body.total_distance];
 
   var postgres_client = new pg.Client(POSTGRES_CLIENT);
 
@@ -191,9 +191,17 @@ app.post('/run', function(req, res) {
   var query_text = 
   'INSERT \
   INTO RUN \
-  (USER_ID, RUN_TYPE, SOURCE, DESTINATION, DISTANCE) \
-  VALUES ($1, $2, $3, $4, $5)';
-  var query_params = [req.body.user_id, req.body.run_type, req.body.source, req.body.destination, req.body.distance];
+  (USER_ID, SECONDS, MINUTES, HOURS, DISTANCE, TIMESTAMP, COORDINATES) \
+  VALUES ($1, $2, $3, $4, $5, $6, $7)';
+  var query_params = [
+    req.body.user_id, 
+    req.body.seconds,
+    req.body.minutes,
+    req.body.hours,
+    req.body.distance,
+    req.body.timestamp,
+    req.body.coordinates
+  ];
 
   var postgres_client = new pg.Client(POSTGRES_CLIENT);
 
